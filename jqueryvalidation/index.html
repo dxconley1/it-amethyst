@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  
+  <meta name="keywords" content="HTML, CSS">
+  <meta name="author" content="DanellConley">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.min.js"></script>
+  
+  
+  <h2>Employee Information</h2>
+  
+  
+  <br>
+  <label for="FirstName" class="formlabel">First Name: </label>
+  <input type="text" id="FirstName" name="FirstName" size="30" maxlength="30" data-rule-required="true" data-msg-required="First Name is Required" class="error" aria-invalid="true">
+  <label for="FirstName" class="error">First Name is Required</label>
+  <br>
+  
+   <br>
+  <label for="Middle Initial" class="formlabel">Middle Initial: </label>
+  <input type="text" id="Middle Initial" name="Middle Initial" size="1" maxlength="1" data-rule-required="true" data-msg-required="Middle Initial is Required" class="error" aria-invalid="true">
+  <label for="Middle Initial" class="error">Middle Initial is Required</label>
+  <br>
+  
+  
+  <br>
+  <label for="LastName" class="formlabel">Last Name: </label>
+  <input type="text" id="LastName" name="LastName" size="30" maxlength="30" data-rule-required="true" data-msg-required="Last Name is Required" class="error">
+  <label for="LastName" class="error">Last Name is Required</label>
+  <br>
+  
+  <br>
+  <label for="Email" class="formlabel">Email: </label>
+  <input type="text" id="Email" name="Email" size="30" maxlength="30" data-rule-required="true" data-msg-required="Email is Required" class="error">
+  <label for="Email" class="error">Email is Required</label>
+  <br>
+  
+   <label for="Sex" class="formlabel" id="GenderLabel">Sex:</label>
+    <label for="GenderMale">
+    <input type="radio" id="GenderMale" name="Gender" value="Male" data-rule-required="true" data-msg-required="Gender is Required" class="valid"> Male
+</label>
+<label for="GenderFemale">
+    <input type="radio" id="GenderFemale" name="Gender" value="Female" class="valid"> Female
+</label>
+<label for="GenderN/A">
+    <input type="radio" id="GenderN/A" name="Gender" value="N/A" class="valid"> N/A
+</label>
+  
+  
+  <br>
+  <label for="Birthday" class="formlabel" id="BirthdayLabel">Birthday: </label>
+  <input class="forminput error" id="Birthday" name="Birthday" type="text" maxlength="8" size="8" data-rule-required="true" data-msg-required="Birthday is Required" data-rule-number="true" data-msg-number="Please Enter the Birthday" data-rule-min="0" data-msg-min="Birthday must be greater than or equal to zero" data-rule-max="10" data-msg-max="Birthday must be less than or equal to 10">
+  <label for="Birthday" class="error">Birthday is Required</label>
+  <br>
+  
+  
+   <br>
+  <label for="Height " class="formlabel">Height: </label>
+  <input type="text" id="Email" name="Height " size="3" maxlength="3" data-rule-required="true" data-msg-required="Height  is Required" class="error">
+  <label for="Height " class="error">Height  is Required</label>
+  <br>
+  
+   <br>
+  <label for="Weight " class="formlabel">Weight: </label>
+  <input type="text" id="Email" name="Weight " size="3" maxlength="3" data-rule-required="true" data-msg-required="Weight  is Required" class="error">
+  <label for="Weight " class="error">Weight  is Required</label>
+  <br>
+  
+   <br>
+  <label for="Phone Number" class="formlabel">Phone Number: </label>
+  <input type="text" id="Email" name="Phone Numbert " size="14" maxlength="14" data-rule-required="true" data-msg-required="Phone Number  is Required" class="error">
+  <label for="Phone Number " class="error">Phone Number  is Required</label>
+  <br>
+  
+ <br>
+  <label for="Marital Status" class="formlabel" id="Marital StatusLabel">Marital Status: </label>
+  <select id="Marital Status" name="Marital Status" data-rule-required="true" data-msg-required="Marital Status is Required" class="valid" aria-invalid="false">
+    <option value="">Select a Status...</option>
+    <option value="Married returns">Married returns</option>
+    <option value="Divorced returns">Divorced returns</option>
+    <option value="Legally Separated returns">Legally Separated returns</option>
+    <option value="Widowed returnsn">Widowed returnsn</option>
+    <label for="Location" class="error" style="display: none;"></label>
+    <br>
+    </select>
+
+  <br>
+  <label for="Address " class="formlabel"> Address: </label>
+  <input type="text" id="Email" name="Address  " size="30" maxlength="30" data-rule-required="true" data-msg-required="Address is Required" class="error">
+  <label for="Address  " class="error">Address is Required</label>
+  <br>
+
+  
+  <br>
+  <label for="City/State/Zip " class="formlabel"> City/State/Zip: </label>
+  <input type="text" id="City/State/Zip" name="City/State/Zip  " size="30" maxlength="30" data-rule-required="true" data-msg-required="City/State/Zip is Required" class="error">
+  <label for="Address  " class="error">City/State/Zip is Required</label>
+  <br>
+ <select id="Location" name="Location" data-rule-required="true" data-msg-required="Location is Required" class="valid" aria-invalid="false">
+    <option value="">Select a Location...</option>
+    <option value="Little Rock">Little Rock</option>
+    <option value="North Little Rock">North Little Rock</option>
+    <option value="Conway">Conway</option>
+    <option value="Benton">Benton</option>
+</select>
+<label for="Location" class="error" style="display: none;"></label>
+
+<br>
+<label for="Taking Medications" class="formlabel">Taking Medications: </label>
+ <input type="radio" id="GenderMale" name="Gender" value="Male" data-rule-required="true" data-msg-required="Gender is Required" class="valid"> Yes
+</label>
+<label for="GenderFemale">
+    <input type="radio" id="GenderFemale" name="Gender" value="No" class="valid"> No
+</label>
+
+<br>
+<br>
+<br>
+<input type="submit" value="Submit Employee Form">
+
+
+
+
+      </body>
+</html
