@@ -18,7 +18,9 @@ function GetStock() {
         
         /* URL for AJAX Call */
         var myURL2 = "https://api.polygon.io/v2/aggs/ticker/" + StockSymbol + "/range/1/day/" + FromDate + "/" + ToDate + "?unadjusted=false&sort=asc&limit=32&apiKey=" + apiKey;
-        myURL2 = "https://api.polygon.io/v2/aggs/ticker/C:EURUSD/range/1/day/2020-10-14/2020-10-20?unadjusted=true&sort=asc&limit=120&apiKey=35eaVfKsObXpSg2O4kMLj9udr2DgVW1f";
+        myURL2 = "https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/2020-10-14/2020-10-14?unadjusted=true&sort=asc&limit=120&apiKey=72iRTb0Kpusy7NtwZ4JkhBHvImLgBn0b
+
+;
 
         /* AJAX Method (POST or GET) */
         var myMethod2 = "GET";
