@@ -1,75 +1,82 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
     <meta name="description" content="Polygon - Company Details">
     <meta name="keywords" content="HTML, CSS,JavaScript, AJAX, jQuery">
     <meta name="author" content="Danell Conley">
     <title>Mars Rover Photo Explorer</title>
-    <link href="style/style.css" rel="stylesheet" type="text/css" />
+   <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
-   
-            <h2>Mars Rover Photo Explorer</h2>
-          
-           
-           
-            
-           <h3>Select a rover and a picture date:</h3>
-              <label class="formlabel">Rover: </label>
-            </label>
-                <label for="AddOperator">
-                    <input type="radio" name="Operator" id="SubtractOperator" value = "Curiosity">Curiosity
+<form id="myform">
+    <div class="formcontainer">
+        <h1>Mars Rover Photo Explorer</h1>
+            <table>
+              <tr><th scope="col">Rover</th><th scope="col">Mission Start</th><th scope="col">Mission End</th>
+              <tr><td>Curiosity</td><td>08/06/2012</td><td>09/28/2019</td>
+              <tr><td>Opportunity</td><td>01/26/2004</td><td>06/11/2018</td>
+              <tr><td>Spirit</td><td>01/05/2004</td><td>03/21/2004</td>
+            </table>
+        <h2>Select a rover and a picture date:</h2>
+            <label class="formlabel">Rover: </label>
+                <label for="Curiosity">
+                    <input type="radio" onchange="getCuriosity()" name="Rover" id="Curiosity" value="Curiosity"
+                           data-rule-required="true" data-msg-required="A Rover is Required" />Curiosity
                 </label>
-                <label for="AddOperator">
-                    <input type="radio" name="Operator" id="MultiplyOperator" value = "Opportunity">Opportunity
+                <label for="Opportunity">
+                    <input type="radio" onchange="getOpportunity()" name="Rover" id="Opportunity" value="Opportunity">Opportunity
                 </label>
-                <label for="AddOperator">
-                    <input type="radio" name="Operator" id="DivideOperator" value = "Spirit ">Spirit  
+                <label for="Spirit">
+                    <input type="radio" onchange="getSpirit()" name="Rover" id="Spirit" value="Spirit">Spirit
                 </label>
-                 
-                   
-            <label class="error" for="StockSymbol" id="StockSymbolError"></label><br>
-            <label class="formlabel">Picture Date:</label>
-            <input type="date" name="Date" id="Date" 
-                data-rule-required="true" data-msg-required=" Date is Required">
-            <label id="DateError" for="Date" class="error"></label>
-            
-            
-            
-            
+            <label for="Rover" class="error" id="RoverError"></label>
             <br><br>
-            <input type="button" value="Search" id="Search" name="Search" onclick="GetStock();">
-            <input type="button" value="Clear" id="Clear" name="Clear" onclick="ClearForm();">
-            <hr>
-            <br>
-           
-
-            <div class="clearfix">
-                <div class="img-container">
-                    <span id="StockValueTable"></span>
-                </div>
-                <div class="img-container">
-                    <span id="StockVolumeTable"></span>
-                </div>
-            </div>
-            <hr>
             
-            <div class="clearfix">
-                <div class="img-container">
-                    <canvas id="chartjs-0" width="400" height="400"></canvas>
-                </div>
-                <div class="img-container">
-                    <canvas id="chartjs-1" width="400" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-    </form>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-    <script src="scripts/script.js"></script>
+            <label class="formlabel" for="PictureDate">Picture Date: </label>
+            <input type="date" id="PictureDate" name="PictureDate"      
+                   data-rule-required="true"  data-msg-required="Date is Required" >
+            <label class="error" for="PictureDate" id="PictureDateError"></label>
+            <br><br>
+
+            <input type="button" value="Search" name="Search" onclick="findrover();">
+            <input type="button" value="Clear" name="Clear" onclick="clearform();" novalidate>
+            <p id="text1"></p>
+    <hr>
+            <p id="text2"></p>
+    <div>
+        <a id="anchor0" href="#"><img id="image0" src="#" height="100" width="100"></a>
+        <a id="anchor1" href="#"><img id="image1" src="#" height="100" width="100"></a>
+        <a id="anchor2" href="#"><img id="image2" src="#" height="100" width="100"></a>
+        <a id="anchor3" href="#"><img id="image3" src="#" height="100" width="100"></a>
+        <a id="anchor4" href="#"><img id="image4" src="#" height="100" width="100"></a>
+        <a id="anchor5" href="#"><img id="image5" src="#" height="100" width="100"></a>
+        <a id="anchor6" href="#"><img id="image6" src="#" height="100" width="100"></a>
+        <a id="anchor7" href="#"><img id="image7" src="#" height="100" width="100"></a>
+        <a id="anchor8" href="#"><img id="image8" src="#" height="100" width="100"></a>
+        <a id="anchor9" href="#"><img id="image9" src="#" height="100" width="100"></a>
+        <a id="anchor10" href="#"><img id="image10" src="#" height="100" width="100"></a>
+        <a id="anchor11" href="#"><img id="image11" src="#" height="100" width="100"></a>
+        <a id="anchor12" href="#"><img id="image12" src="#" height="100" width="100"></a>
+        <a id="anchor13" href="#"><img id="image13" src="#" height="100" width="100"></a>
+        <a id="anchor14" href="#"><img id="image14" src="#" height="100" width="100"></a>
+        <a id="anchor15" href="#"><img id="image15" src="#" height="100" width="100"></a>
+        <a id="anchor16" href="#"><img id="image16" src="#" height="100" width="100"></a>
+        <a id="anchor17" href="#"><img id="image17" src="#" height="100" width="100"></a>
+        <a id="anchor18" href="#"><img id="image18" src="#" height="100" width="100"></a>
+        <a id="anchor19" href="#"><img id="image19" src="#" height="100" width="100"></a>
+        <a id="anchor20" href="#"><img id="image20" src="#" height="100" width="100"></a>
+        <a id="anchor21" href="#"><img id="image21" src="#" height="100" width="100"></a>
+        <a id="anchor22" href="#"><img id="image22" src="#" height="100" width="100"></a>
+        <a id="anchor23" href="#"><img id="image23" src="#" height="100" width="100"></a>
+        <a id="anchor24" href="#"><img id="image24" src="#" height="100" width="100"></a>
+    </div>    
+</div>
+</form>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
