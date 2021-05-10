@@ -43,10 +43,7 @@ img[src="#"] {
   display:none;
 }
 
-html { 
-  background: url("../img/space.jpg") no-repeat center center fixed; 
-  background-size: cover;
-}
+
 
 h1,h2 {
   color: #ffffff;

@@ -1,5 +1,5 @@
 function findrover() {
-    "use strict";
+    "use from";
 
     var form = $("#myform");
     
