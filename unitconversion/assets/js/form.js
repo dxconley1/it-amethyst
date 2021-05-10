@@ -1,5 +1,5 @@
 function calculate() {
-    "use strict";
+    "use form";
 
     var form = $( "#myform" );
     

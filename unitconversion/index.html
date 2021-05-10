@@ -2,80 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Mars Rover">
+    <meta name="description" content="Unit Converter">
     <meta name="keywords" content="JavaScript, HTML, CSS">
     <meta name="author" content="Danell Conley">
-    <title>Mars Rover Photo Explorer</title>
+    <title>Unit Converter</title>
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/additional-methods.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 </head>
 <body>
 <form id="myform">
     <div class="formcontainer">
-        <h1>Mars Rover Photo Explorer</h1>
-            <table>
-              <tr><th scope="col">Rover</th><th scope="col">Mission Start</th><th scope="col">Mission End</th>
-              <tr><td>Curiosity</td><td>08/06/2012</td><td>09/28/2019</td>
-              <tr><td>Opportunity</td><td>01/26/2004</td><td>06/11/2018</td>
-              <tr><td>Spirit</td><td>01/05/2004</td><td>03/21/2004</td>
-            </table>
-        <h2>Select a rover and a picture date:</h2>
-            <label class="formlabel">Rover: </label>
-                <label for="Curiosity">
-                    <input type="radio" onchange="getCuriosity()" name="Rover" id="Curiosity" value="Curiosity"
-                           data-rule-required="true" data-msg-required="A Rover is Required" />Curiosity
-                </label>
-                <label for="Opportunity">
-                    <input type="radio" onchange="getOpportunity()" name="Rover" id="Opportunity" value="Opportunity">Opportunity
-                </label>
-                <label for="Spirit">
-                    <input type="radio" onchange="getSpirit()" name="Rover" id="Spirit" value="Spirit">Spirit
-                </label>
-            <label for="Rover" class="error" id="RoverError"></label>
+        <h1>Unit Converter (AJAX)</h1>
+        <fieldset id="detail">
+            <legend>Unit Converter (AJAX)</legend>
+            <br>
+            <label class="formlabel" for="FromValue">From Value: </label>
+            <input type="text" id="FromValue" name="FromValue" size="15" maxlength="15"       
+                   data-rule-required="true"  data-msg-required="Value is Required" 
+                   data-rule-number="true" data-msg-number="Value must be a Number">
+            <label class="error" for="FromValue" id="FromValueError"></label>
             <br><br>
             
-            <label class="formlabel" for="PictureDate">Picture Date: </label>
-            <input type="date" id="PictureDate" name="PictureDate"      
-                   data-rule-required="true"  data-msg-required="Date is Required" >
-            <label class="error" for="PictureDate" id="PictureDateError"></label>
+            <label class="formlabel">From Unit: </label>
+                <label for="FCentimeters">
+                    <input type="radio" name="FromUnit" id="FCentimeters" value="cm"
+                           data-rule-required="true" data-msg-required="From Unit is Required" />centimeters
+                </label>
+                <label for="FMeters">
+                    <input type="radio" name="FromUnit" id="FMeters" value="m">meters
+                </label>
+                <label for="FKilometers">
+                    <input type="radio" name="FromUnit" id="FKilometers" value="km">kilometers
+                </label>
+                <label for="FInches">
+                    <input type="radio" name="FromUnit" id="FInches" value="in">inches
+                </label>
+                <label for="FFeet">
+                    <input type="radio" name="FromUnit" id="FFeet" value="ft">feet
+                </label>
+                <label for="FYards">
+                    <input type="radio" name="FromUnit" id="FYards" value="yd">yards
+                </label>
+                <label for="FMiles">
+                    <input type="radio" name="FromUnit" id="FMiles" value="mi">miles
+                </label>
+            <label for="FromUnit" class="error" id="FromUnitError"></label>
+            <br><br>
+      
+            <label class="formlabel">To Unit: </label>
+                <label for="TCentimeters">
+                    <input type="radio" name="ToUnit" id="TCentimeters" value="cm"
+                           data-rule-required="true" data-msg-required="To Unit is Required" />centimeters
+                </label>
+                <label for="TMeters">
+                    <input type="radio" name="ToUnit" id="TMeters" value="m">meters
+                </label>
+                <label for="TKilometers">
+                    <input type="radio" name="ToUnit" id="TKilometers" value="km">kilometers
+                </label>
+                <label for="TInches">
+                    <input type="radio" name="ToUnit" id="TInches" value="in">inches
+                </label>
+                <label for="TFeet">
+                    <input type="radio" name="ToUnit" id="TFeet" value="ft">feet
+                </label>
+                <label for="TYards">
+                    <input type="radio" name="ToUnit" id="TYards" value="yd">yards
+                </label>
+                <label for="TMiles">
+                    <input type="radio" name="ToUnit" id="TMiles" value="mi">miles
+                </label>
+            <label for="ToUnit" class="error" id="ToUnitError"></label>
             <br><br>
 
-            <input type="button" value="Search" name="Search" onclick="findrover();">
+            <label class="formlabel">To Value: </label>
+            <span id="ToValue"></span>
+            <br><br>
+
+            <input type="button" value="Calculate" name="Calculate" onclick="calculate();">
             <input type="button" value="Clear" name="Clear" onclick="clearform();" novalidate>
-            <p id="text1"></p>
-    <hr>
-            <p id="text2"></p>
-    <div>
-        <a id="anchor0" href="#"><img id="image0" src="#" height="100" width="100"></a>
-        <a id="anchor1" href="#"><img id="image1" src="#" height="100" width="100"></a>
-        <a id="anchor2" href="#"><img id="image2" src="#" height="100" width="100"></a>
-        <a id="anchor3" href="#"><img id="image3" src="#" height="100" width="100"></a>
-        <a id="anchor4" href="#"><img id="image4" src="#" height="100" width="100"></a>
-        <a id="anchor5" href="#"><img id="image5" src="#" height="100" width="100"></a>
-        <a id="anchor6" href="#"><img id="image6" src="#" height="100" width="100"></a>
-        <a id="anchor7" href="#"><img id="image7" src="#" height="100" width="100"></a>
-        <a id="anchor8" href="#"><img id="image8" src="#" height="100" width="100"></a>
-        <a id="anchor9" href="#"><img id="image9" src="#" height="100" width="100"></a>
-        <a id="anchor10" href="#"><img id="image10" src="#" height="100" width="100"></a>
-        <a id="anchor11" href="#"><img id="image11" src="#" height="100" width="100"></a>
-        <a id="anchor12" href="#"><img id="image12" src="#" height="100" width="100"></a>
-        <a id="anchor13" href="#"><img id="image13" src="#" height="100" width="100"></a>
-        <a id="anchor14" href="#"><img id="image14" src="#" height="100" width="100"></a>
-        <a id="anchor15" href="#"><img id="image15" src="#" height="100" width="100"></a>
-        <a id="anchor16" href="#"><img id="image16" src="#" height="100" width="100"></a>
-        <a id="anchor17" href="#"><img id="image17" src="#" height="100" width="100"></a>
-        <a id="anchor18" href="#"><img id="image18" src="#" height="100" width="100"></a>
-        <a id="anchor19" href="#"><img id="image19" src="#" height="100" width="100"></a>
-        <a id="anchor20" href="#"><img id="image20" src="#" height="100" width="100"></a>
-        <a id="anchor21" href="#"><img id="image21" src="#" height="100" width="100"></a>
-        <a id="anchor22" href="#"><img id="image22" src="#" height="100" width="100"></a>
-        <a id="anchor23" href="#"><img id="image23" src="#" height="100" width="100"></a>
-        <a id="anchor24" href="#"><img id="image24" src="#" height="100" width="100"></a>
-    </div>    
-</div>
+        </fieldset>
+    </div>
 </form>
 <script src="assets/js/form.js"></script>
 </body>
